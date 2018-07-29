@@ -1,0 +1,11 @@
+{
+  "name": "konux",
+  "version": "1.0.0",
+  "description": "Konux Use Case Assignment",
+  "main": "wepack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shashank Keshava <keshavashashank@gmail.com>",
+  "license": "ISC"
+}
