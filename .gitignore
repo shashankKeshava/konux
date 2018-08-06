@@ -1,5 +1,10 @@
 # Ignore Node Modules
 node_modules/
 
-#Ignore Error Logs
+#Ignore Locks
 yarn-error.log
+yarn.lock
+
+#Build
+public/
+docs/

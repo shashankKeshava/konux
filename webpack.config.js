@@ -10,7 +10,7 @@ const commonPaths = {
 };
 
 module.exports = {
-    entry: commonPaths.src,
+    entry: ['babel-polyfill', commonPaths.src],
     devServer: {
         contentBase: commonPaths.public,
         port: 8080,
