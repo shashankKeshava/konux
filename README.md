@@ -20,4 +20,4 @@ http://localhost:9000/
 
 ### Live Demo
 
-https://shashankkeshava.github.io/about-you-test/
+https://shashankkeshava.github.io/konux/
