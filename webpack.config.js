@@ -4,7 +4,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const commonPaths = {
-    public: path.resolve(__dirname, 'public/'),
+    public: path.resolve(__dirname, 'docs/'),
     src: path.resolve(__dirname, 'src/'),
     assets: path.resolve(__dirname, 'assets/'),
 };
@@ -13,7 +13,7 @@ module.exports = {
     entry: ['babel-polyfill', commonPaths.src],
     devServer: {
         contentBase: commonPaths.public,
-        port: 8080,
+        port: 9000,
         stats: 'minimal',
     },
     devtool: 'source-map',
@@ -42,6 +42,10 @@ module.exports = {
             {
                 test: /\.(otf|eot|svg|ttf|woff|woff2).*$/,
                 loader: 'url-loader?limit=10000',
+            },
+            {
+                test: /\.css$/,
+                loader: ['style-loader', 'css-loader'],
             },
         ],
     },

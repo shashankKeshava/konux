@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { AppDuc } from './duc';
-import { createStructuredSelector } from 'reselect';
 
 import { AppWrapper, Title, LoadMore, LoadWrapper } from './__style';
 
@@ -20,20 +17,6 @@ async function fetchData() {
     return data;
 }
 
-@connect(
-    createStructuredSelector({
-        root: AppDuc.selectors.root,
-        apparels: AppDuc.selectors.apparelList,
-        gender: AppDuc.selectors.gender,
-        sortBy: AppDuc.selectors.sortBy,
-    }),
-    dispatch => ({
-        filterByGender: gender =>
-            dispatch(AppDuc.creators.filterByGender(gender)),
-        sortByFilter: type => dispatch(AppDuc.creators.sortBy(type)),
-        toggleWishList: type => dispatch(AppDuc.creators.toggleWishList(type)),
-    })
-)
 class App extends Component {
     constructor(props) {
         super(props);
@@ -53,20 +36,37 @@ class App extends Component {
 
     render() {
         const { loading, data = false } = this.state;
-        // Update Session Storage
-        // sessionStorage.setItem('ay-data', JSON.stringify(apparelList));
         return (
             <AppWrapper>
                 <Title>KONOUX Coding Test</Title>
-                {loading && 'Loading....'}
+                {loading && (
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        Loading....
+                    </div>
+                )}
                 {!loading && (
-                    <LineChart
-                        payload={data}
-                        height={40}
-                        selectX={datum => new Date(datum.day)}
-                        selectY={datum => datum.productPerceivedQuality}
-                        width={200}
-                    />
+                    <div
+                        style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                        }}
+                    >
+                        <LineChart
+                            payload={data}
+                            height={40}
+                            margin={20}
+                            selectX={datum =>
+                                new Date(datum.x).setHours(0, 0, 0, 0)
+                            }
+                            selectY={datum => datum.y}
+                            width={200}
+                        />
+                    </div>
                 )}
             </AppWrapper>
         );

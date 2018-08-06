@@ -8,6 +8,7 @@ import {
 import { select as d3Select } from 'd3-selection';
 import { line as d3Line } from 'd3-shape';
 import './index.css';
+import SVGWithMargin from '../SVGWithMargin';
 
 class LineChart extends Component {
     render() {
@@ -17,6 +18,7 @@ class LineChart extends Component {
             selectX,
             selectY,
             width,
+            margin,
         } = this.props;
         const xScale = d3ScaleTime()
             .domain(d3ArrayExtent(data, selectX))
@@ -46,13 +48,13 @@ class LineChart extends Component {
         }));
 
         return (
-            <svg
+            <SVGWithMargin
                 className="container"
                 contentContainerBackgroundRectClassName="contentContainerBackgroundRect"
                 contentContainerGroupClassName="contentContainer"
-                height={'250px'}
-                margin={'10px'}
-                width={'250px'}
+                height={height}
+                margin={margin}
+                width={width}
             >
                 <g
                     className="xAxis"
@@ -75,7 +77,7 @@ class LineChart extends Component {
                         />
                     ))}
                 </g>
-            </svg>
+            </SVGWithMargin>
         );
     }
 }

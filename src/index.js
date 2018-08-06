@@ -1,45 +1,19 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware, compose } from 'redux';
-import { createLogger } from 'redux-logger';
-import thunk from 'redux-thunk';
 import { Provider as FelaProvider } from 'react-fela';
 import { createRenderer } from 'fela';
 import extend from 'fela-plugin-extend';
 
-import Reducer from './store/combinedReducer';
-import createSagaMiddleware from 'redux-saga';
-
 // Root Container
 import App from './container/app/';
-
-// Define Initial State
-const initialState = {};
-// create the saga middleware
-const sagaMiddleware = createSagaMiddleware();
 
 const renderer = createRenderer({
     plugins: [extend()],
 });
 
-const logger = createLogger({ timestamp: true });
-const store = createStore(
-    Reducer,
-    initialState,
-    compose(
-        applyMiddleware(thunk, logger, sagaMiddleware),
-        window.devToolsExtension ? window.devToolsExtension() : f => f
-    ),
-    /* preloadedState, */
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-
 render(
-    <Provider store={store}>
-        <FelaProvider renderer={renderer}>
-            <App />
-        </FelaProvider>
-    </Provider>,
+    <FelaProvider renderer={renderer}>
+        <App />
+    </FelaProvider>,
     document.getElementById('root')
 );
