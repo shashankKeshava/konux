@@ -4,7 +4,7 @@ import { AppWrapper, Title, LoadMore, LoadWrapper } from './__style';
 
 import LineChart from '../../components/LineChart';
 async function fetchData() {
-    const data = await fetch('http://konuxdata.getsandbox.com/data')
+    const data = await fetch('https://konuxdata.getsandbox.com/data')
         .then(response => {
             console.log(response);
             response = response.json();

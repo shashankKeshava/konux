@@ -51870,7 +51870,7 @@ var fetchData = function () {
                 switch (_context.prev = _context.next) {
                     case 0:
                         _context.next = 2;
-                        return fetch('http://konuxdata.getsandbox.com/data').then(function (response) {
+                        return fetch('https://konuxdata.getsandbox.com/data').then(function (response) {
                             console.log(response);
                             response = response.json();
                             return response;
